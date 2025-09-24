@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Explore Jharkhand — Places</title>
+    <style>
+        :root {
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --accent: #0b6b4f;
+            --glass: rgba(255, 255, 255, 0.75);
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, system-ui, Arial, sans-serif;
+        }
+
+        body {
+            /* background image from Netarhat (Wikimedia) + dark overlay */
+            background-image: linear-gradient(rgba(10, 10, 10, 0.45), rgba(10, 10, 10, 0.45)),
+                url("https://upload.wikimedia.org/wikipedia/commons/a/a4/Netarhat%2C_Jharkhand.jpg");
+            background-size: cover;
+            background-position: center;
+            color: #111;
+        }
+
+        .page {
+            min-height: 100vh;
+            backdrop-filter: blur(6px);
+            padding: 36px;
+            box-sizing: border-box;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            letter-spacing: 0.6px
+        }
+
+        header a.back {
+            color: white;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 8px 12px;
+            border-radius: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 28px rgba(2, 6, 23, 0.18);
+            display: flex;
+            flex-direction: column;
+            min-height: 320px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card .body {
+            padding: 12px 14px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h3 {
+            margin: 6px 0 8px;
+            font-size: 1.05rem
+        }
+
+        .card p {
+            margin: 0 0 12px;
+            color: #444;
+            flex: 1;
+            font-size: 0.95rem
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            background: var(--accent);
+            color: white;
+        }
+
+        .credit {
+            margin-left: auto;
+            font-size: 0.82rem;
+            color: #666;
+            text-decoration: none
+        }
+
+        .credit:hover {
+            text-decoration: underline
+        }
+
+        /* modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.18s ease;
+        }
+
+        .modal.open {
+            opacity: 1;
+            pointer-events: auto
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 900px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(2, 6, 23, 0.4);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            background: #f7f7f7
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.1rem
+        }
+
+        .close {
+            margin-left: auto;
+            background: transparent;
+            border: 0;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 0
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 420px;
+            border: 0;
+            display: block
+        }
+
+        .modal-footer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #fff
+        }
+
+        .modal-footer a {
+            color: var(--accent);
+            text-decoration: none
+        }
+
+        @media (max-width:480px) {
+            .modal-body iframe {
+                height: 300px
+            }
+
+            .card img {
+                height: 140px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <h1>Explore Jharkhand — Top 10 places</h1>
+            <div>
+                <a class="back" href="index.html">← Back to site</a>
+            </div>
+        </header>
+
+        <main>
+            <div class="grid">
+                <!-- Card 1 -->
+                <article class="card" data-place="Hundru Falls">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Hundru_falls.JPG" alt="Hundru Falls">
+                    <div class="body">
+                        <h3>Hundru Falls</h3>
+                        <p>Scenic waterfall near Ranchi — one of Jharkhand's most famous cascades.</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit" href="https://commons.wikimedia.org/wiki/File:Hundru_falls.JPG"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="card" data-place="Dassam Falls">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Dassam_Falls.jpg" alt="Dassam Falls">
+                    <div class="body">
+                        <h3>Dassam (Dasam) Falls</h3>
+                        <p>Huge multi-tiered waterfall on the Kanchi river near Ranchi.</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit" href="https://commons.wikimedia.org/wiki/File:Dassam_Falls.jpg"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="card" data-place="Jonha Falls">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Jonha_falls.jpg" alt="Jonha Falls">
+                    <div class="body">
+                        <h3>Jonha Falls</h3>
+                        <p>Picturesque waterfall near Ranchi with natural pools.</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit" href="https://commons.wikimedia.org/wiki/File:Jonha_falls.jpg"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="card" data-place="Usri Falls Giridih">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Usri_falls%2Cgiridih%2Cjharkhand.jpg"
+                        alt="Usri Falls">
+                    <div class="body">
+                        <h3>Usri Falls</h3>
+                        <p>A beautiful waterfall near Giridih — popular picnic spot.</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit"
+                                href="https://commons.wikimedia.org/wiki/File:Usri_falls%2Cgiridih%2Cjharkhand.jpg"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="card" data-place="Netarhat">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Netarhat%2C_Jharkhand.jpg"
+                        alt="Netarhat">
+                    <div class="body">
+                        <h3>Netarhat</h3>
+                        <p>Hill station — famous for sunrise/sunset viewpoints (the 'Queen of Chotanagpur').</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit" href="https://commons.wikimedia.org/wiki/File:Netarhat%2C_Jharkhand.jpg"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="card" data-place="Baidyanath Temple Deoghar">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Baidyanath_Dham_Deoghar.jpg"
+                        alt="Baidyanath Dham">
+                    <div class="body">
+                        <h3>Baidyanath Dham (Deoghar)</h3>
+                        <p>One of the 12 Jyotirlingas — important pilgrimage site.</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit" href="https://commons.wikimedia.org/wiki/File:Baidyanath_Dham_Deoghar.jpg"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 7 -->
+                <article class="card" data-place="Parasnath Hill">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Parasnath_hills.jpg" alt="Parasnath">
+                    <div class="body">
+                        <h3>Parasnath Hill</h3>
+                        <p>Highest mountain in Jharkhand — important Jain pilgrimage site.</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit" href="https://commons.wikimedia.org/wiki/File:Parasnath_hills.jpg"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 8 -->
+                <article class="card" data-place="Jubilee Park Jamshedpur">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Jubilee_Park_Jamshedpur.jpg"
+                        alt="Jubilee Park">
+                    <div class="body">
+                        <h3>Jubilee Park (Jamshedpur)</h3>
+                        <p>Large city park built by Tata Steel, a green oasis in Jamshedpur.</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit" href="https://commons.wikimedia.org/wiki/File:Jubilee_Park_Jamshedpur.jpg"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 9 -->
+                <article class="card" data-place="Betla National Park">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Palamu_quila_2.jpg"
+                        alt="Betla National Park">
+                    <div class="body">
+                        <h3>Betla National Park (Palamu)</h3>
+                        <p>Wildlife park in Palamu Tiger Reserve — known for forests and historic forts.</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit" href="https://commons.wikimedia.org/wiki/File:Palamu_quila_2.jpg"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 10 -->
+                <article class="card" data-place="Rajrappa Temple">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Rajrappa_Temple_1.jpg"
+                        alt="Rajrappa Temple">
+                    <div class="body">
+                        <h3>Rajrappa Temple</h3>
+                        <p>Famous temple on the confluence of rivers — spiritual and scenic spot.</p>
+                        <div class="controls">
+                            <button class="btn view-map">View map</button>
+                            <a class="credit" href="https://commons.wikimedia.org/wiki/File:Rajrappa_Temple_1.jpg"
+                                target="_blank" rel="noopener"></a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="mapModal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header">
+                <h2 id="modalTitle">Place</h2>
+                <button class="close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <iframe id="mapFrame" src="" allowfullscreen></iframe>
+            </div>
+            <div class="modal-footer">
+                <div id="modalCredit" style="font-size:0.9rem;color:#555"></div>
+                <a id="openInGoogle" href="#" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // modal + map logic
+        const modal = document.getElementById('mapModal');
+        const mapFrame = document.getElementById('mapFrame');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalCredit = document.getElementById('modalCredit');
+        const openInGoogle = document.getElementById('openInGoogle');
+
+        function openModal(placeName, creditHref) {
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            modalTitle.textContent = placeName;
+            // embed maps search (works without API key for simple search)
+            const embed = 'https://www.google.com/maps?q=' + encodeURIComponent(placeName) + '&output=embed';
+            mapFrame.src = embed;
+            openInGoogle.href = 'https://www.google.com/maps?q=' + encodeURIComponent(placeName);
+            modalCredit.innerHTML = 'Image / credit: <a href="' + creditHref + '" target="_blank" rel="noopener">Wikimedia file</a>';
+        }
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            // stop iframe
+            mapFrame.src = '';
+        }
+
+        document.querySelectorAll('.view-map').forEach(btn => {
+            btn.addEventListener('click', e => {
+                const card = btn.closest('.card');
+                const place = card.dataset.place || card.querySelector('h3').innerText;
+                const credit = card.querySelector('.credit').href;
+                openModal(place, credit);
+            });
+        });
+
+        document.querySelector('.close').addEventListener('click', closeModal);
+        // close when clicking outside modal content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        // ESC to close
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    </script>
+</body>
+
+</html>

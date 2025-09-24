@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels & Stays in Ranchi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://cdn.pixabay.com/photo/2016/06/25/12/37/ranchi-1478144_1280.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #333;
+        }
+
+        /* Overlay to make content readable */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(44, 62, 80, 0.8);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        header .back {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        header .back:hover {
+            color: #1abc9c;
+        }
+
+        main.container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #3498db;
+        }
+
+        .card h3 {
+            margin: 15px 15px 5px;
+            font-size: 20px;
+            color: #2c3e50;
+        }
+
+        .card p {
+            margin: 5px 15px 15px;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .card a {
+            display: inline-block;
+            margin: 5px 15px 15px;
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .card a:hover {
+            color: #1abc9c;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 28px;
+            }
+
+            main.container {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Hotels & Stays in Ranchi</h1>
+
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <img src="./img/hotel1.jpg" alt="Radisson Blu Ranchi">
+            <h3>Radisson Blu, Ranchi</h3>
+            <p>Luxury hotel near Ranchi Airport with modern amenities.</p>
+            <a href="https://www.radissonhotels.com/en-us/hotels/radisson-blu-ranchi" target="_blank">View Hotel</a>
+            <a href="https://maps.app.goo.gl/TDFwL8dJc9gS6QJCA" target="_blank">View on Google Maps</a>
+        </div>
+
+        <div class="card">
+            <img src="./img/hotel2.jpg" alt="Capitol Residency Ranchi">
+
+            <h3>Capitol Residency, Ranchi</h3>
+            <p>Elegant rooms and premium facilities in the heart of Ranchi.</p>
+            <a href="https://www.capitolresidency.com/" target="_blank">View Hotel</a>
+            <a href="https://maps.app.goo.gl/Q75p5yVw3d6mXjC36" target="_blank">View on Google Maps</a>
+        </div>
+
+        <div class="card">
+            <img src="./img/hotel3.jpg" alt="Hotel AVN Grand Ranchi">
+            <h3>Hotel AVN Grand, Ranchi</h3>
+            <p>Contemporary hotel with stylish rooms and dining options.</p>
+            <a href="https://www.hotelavngrand.com/" target="_blank">View Hotel</a>
+            <a href="https://maps.app.goo.gl/1Jk5M4GgL4YjM6vH6" target="_blank">View on Google Maps</a>
+        </div>
+
+        <div class="card">
+            <img src="./img/hotel4.jpg" alt="Hotel Le Lac Sarovar Ranchi">
+            <h3>Hotel Le Lac Sarovar, Ranchi</h3>
+            <p>Modern hotel with lake views and excellent dining options.</p>
+            <a href="https://www.sarovarhotels.com/le-lac-sarovar-ranchi/" target="_blank">View Hotel</a>
+            <a href="https://maps.app.goo.gl/2L9yP6U8eE5fX8vXA" target="_blank">View on Google Maps</a>
+        </div>
+
+        <div class="card">
+            <img src="./img/hotel5.jpg" alt="Chanakya BNR Ranchi">
+            <h3>Chanakya BNR, Ranchi</h3>
+            <p>Heritage hotel offering colonial charm and modern amenities.</p>
+            <a href="https://chanakyabnrranchi.com/" target="_blank">View Hotel</a>
+            <a href="https://maps.app.goo.gl/mE23E6M7v9gXQ8J59" target="_blank">View on Google Maps</a>
+        </div>
+
+        <div class="card">
+            <img src="./img/hotel6.jpg" alt="Mango Hotels Ranchi">
+            <h3>Mango Hotels, Ranchi</h3>
+            <p>Contemporary hotel chain offering comfort at affordable prices.</p>
+            <a href="https://www.staymango.com/" target="_blank">View Hotel</a>
+            <a href="https://maps.app.goo.gl/tB9L2fW4oYp3M7cE8" target="_blank">View on Google Maps</a>
+        </div>
+
+        <div class="card">
+            <img src="./img/hotel7.jpg" alt="Hotel Green Horizon Ranchi">
+            <h3>Hotel Green Horizon, Ranchi</h3>
+            <p>Modern amenities with a touch of nature-inspired design.</p>
+            <a href="https://www.agoda.com/en-in/hotel-green-horizon/hotel/ranchi-in.html" target="_blank">View
+                Hotel</a>
+            <a href="https://maps.app.goo.gl/C2m8wP2pQ4D3uY5G7" target="_blank">View on Google Maps</a>
+        </div>
+
+        <div class="card">
+            <img src="./img/hotel8.jpg" alt="Hotel Accord Ranchi">
+            <h3>Hotel Accord, Ranchi</h3>
+            <p>Comfortable stay with good service and modern facilities.</p>
+            <a href="https://www.hotels.com/ho982725344/hotel-accord-ranchi-india/" target="_blank">View Hotel</a>
+            <a href="https://maps.app.goo.gl/2V8qR9vLz6C4m9T2A" target="_blank">View on Google Maps</a>
+        </div>
+    </main>
+</body>
+
+</html>
